@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.acegikmo.mathfs": "0.1.0",
     "com.cysharp.unitask": "2.5.3",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.ide.rider": "3.0.24",
@@ -48,7 +49,8 @@
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.cysharp.unitask"
+        "com.cysharp.unitask",
+        "com.acegikmo.mathfs"
       ]
     }
   ]
