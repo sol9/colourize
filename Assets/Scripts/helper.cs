@@ -40,16 +40,16 @@ public static class helper
 	public static int randomIndex(this IList list) => list.valid() ? random(list.Count) : 0;
 
 	public static T randomOrDefault<T>(this IList<T> list)
-    {
-        try
-        {
-            return list[random(list.Count)];
-        }
-        catch
-        {
-            return default(T);
-        }
-    }
+	{
+		try
+		{
+			return list[random(list.Count)];
+		}
+		catch
+		{
+			return default(T);
+		}
+	}
 
 	public static List<T> toShuffledList<T>(this List<T> list)
 	{
@@ -63,6 +63,18 @@ public static class helper
 	}
 
 	public static List<T> toShuffledList<T>(this IEnumerable<T> source) => toShuffledList(source.ToList());
+
+	public static void setActiveAll(this IEnumerable<GameObject> objects, bool active)
+	{
+		if (objects != null)
+			objects.forEach(o => o.setActiveSafe(active));
+	}
+
+	public static void setActiveByIndex(this IList<GameObject> objects, int index)
+	{
+		if (objects != null)
+			objects.forEach((i, o) => o.setActiveSafe(i == index));
+	}
 
 	public static Vector3 changeTo(this Vector3 v, float? x = null, float? y = null, float? z = null) => new Vector3(x ?? v.x, y ?? v.y, z ?? v.z);
 	public static void set(this Vector3 v, float? x = null, float? y = null, float? z = null) => v = new Vector3(x ?? v.x, y ?? v.y, z ?? v.z);
@@ -102,18 +114,30 @@ public static class helper
 	}
 
 	public static void copyFrom(this Transform dst, Transform src)
-    {
-        dst.SetPositionAndRotation(src.position, src.rotation);
-    }
+	{
+		dst.SetPositionAndRotation(src.position, src.rotation);
+	}
 
 	public static void swap(this Transform t1, Transform t2)
-    {
+	{
 		(t1.position, t2.position) = (t2.position, t1.position);
 		(t1.rotation, t2.rotation) = (t2.rotation, t1.rotation);
-    }
+	}
 
 	public static bool includes(this LayerMask layer, int target)
 	{
 		return (layer.value & 1 << target) > 0;
+	}
+
+	public static void setActiveSafe(this GameObject o, bool active)
+	{
+		if (o)
+			o.SetActive(active);
+	}
+
+	public static void setActiveSafe(this Transform t, bool active)
+	{
+		if (t)
+			t.gameObject.SetActive(active);
 	}
 }
