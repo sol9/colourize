@@ -7,7 +7,6 @@ public class tileMaker : MonoBehaviour
 {
 	public Transform parent;
 	public tile tilePrefab;
-	public List<Material> colors;
 
 	private LinkedList<tile> _tiles;
 
@@ -17,9 +16,9 @@ public class tileMaker : MonoBehaviour
 			parent = transform;
 	}
 
-	public bool initialize()
+	public LinkedListNode<tile> initialize()
 	{
-		return make(15);
+		return make(15) ? _tiles.First : default;
 	}
 
 	public bool make(int count = 1)
@@ -51,15 +50,8 @@ public class tileMaker : MonoBehaviour
 
 	private tile _makeTile(int index = -1)
 	{
-		if (colors.invalid())
-			return default;
-
-		if (colors.invalid(index))
-			index = helper.randomIndex(colors);
-
 		var t = Instantiate(tilePrefab, parent);
-		t.renderer.material = colors[index];
-		t.index = index;
+		t.color = index;
 
 		return t;
 	}

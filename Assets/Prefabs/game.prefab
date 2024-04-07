@@ -64,9 +64,9 @@ MonoBehaviour:
   tilePrefab: {fileID: -702124373417167057, guid: c9a2558f76b597e458257e2b58391e6f,
     type: 3}
   colors:
-  - {fileID: 2100000, guid: 4930c6ffa5b9b9f4098249a43abf8506, type: 2}
-  - {fileID: 2100000, guid: 6968e89851431104b8f931c37d69356b, type: 2}
   - {fileID: 2100000, guid: c70e075a2144ba04784d74b7b2889fd3, type: 2}
+  - {fileID: 2100000, guid: 6968e89851431104b8f931c37d69356b, type: 2}
+  - {fileID: 2100000, guid: 5abb3d18170c7cc4b8ce3577ef8b5ed8, type: 2}
 --- !u!1 &4773322789663559256
 GameObject:
   m_ObjectHideFlags: 0
