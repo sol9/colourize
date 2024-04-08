@@ -51,6 +51,8 @@ public class game : MonoBehaviour
 	{
 		_current = tileMaker.initialize();
 		_previous = null;
+        
+        score = 0;
 	}
 
 	public void step()
